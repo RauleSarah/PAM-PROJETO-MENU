@@ -41,16 +41,13 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
                CustomDialog menud = new CustomDialog(this);
                menud.show(getFragmentManager(),"Menud");
                 insertMode = true;
-
                 return true;
-
 
             default:
                 return super.onOptionsItemSelected(item);
-
-
         }
     }
+
     @Override
     public void onItem(String name) {
         if (insertMode) {
