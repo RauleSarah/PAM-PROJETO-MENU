@@ -2,7 +2,10 @@ package br.com.etechoracio.atividade;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements CustomDialog.ItemListener{
 
@@ -25,6 +28,23 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.ic_menu_add,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu:
+                Toast.makeText(this, "Adicione", Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
     @Override
     public void onItem(String name) {
         if (insertMode) {
