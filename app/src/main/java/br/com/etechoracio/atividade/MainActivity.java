@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
             case R.id.menu:
                CustomDialog menud = new CustomDialog(this);
                menud.show(getFragmentManager(),"Menud");
-
+                insertMode = true;
 
                 return true;
 
