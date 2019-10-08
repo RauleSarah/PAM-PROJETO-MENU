@@ -38,10 +38,16 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu:
-                Toast.makeText(this, "Adicione", Toast.LENGTH_LONG).show();
+               CustomDialog menud = new CustomDialog(this);
+               menud.show(getFragmentManager(),"Menud");
+
+
                 return true;
+
+
             default:
                 return super.onOptionsItemSelected(item);
+
 
         }
     }
