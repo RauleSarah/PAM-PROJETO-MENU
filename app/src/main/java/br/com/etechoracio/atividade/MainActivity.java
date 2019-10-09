@@ -39,6 +39,15 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
 
 
     @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.inflate(R.menu.menu_2);
+        popup.show();
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu:
