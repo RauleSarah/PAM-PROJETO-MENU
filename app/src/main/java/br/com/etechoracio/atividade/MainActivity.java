@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements CustomDialog.ItemListener, AdapterView.OnItemLongClickListener {
+public class MainActivity extends AppCompatActivity implements CustomDialog.ItemListener, AdapterView.OnItemLongClickListener, PopupMenu.OnMenuItemClickListener {
 
     private boolean insertMode;
     private ItemAdapter adapter;
@@ -40,15 +40,6 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
 
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.inflate(R.menu.menu_2);
-        popup.show();
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu:
@@ -62,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
         }
     }
 
+
     @Override
     public void onItem(String name) {
         if (insertMode) {
@@ -70,5 +62,15 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
             adapter.updateItem(selectedItem, name);
         }
     }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.inflate(R.menu.menu_2);
+        popup.show();
+        return true;
+    }
+
 
 }
