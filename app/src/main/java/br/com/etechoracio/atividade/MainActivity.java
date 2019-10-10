@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.ic_menu_add,menu);
+        getMenuInflater().inflate(R.menu.ic_menu_add, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu:
-               CustomDialog menud = new CustomDialog(this);
-               menud.show(getFragmentManager(),"Menud");
+                CustomDialog menud = new CustomDialog(this);
+                menud.show(getFragmentManager(), "Menud");
                 insertMode = true;
                 return true;
 
@@ -68,13 +68,27 @@ public class MainActivity extends AppCompatActivity implements CustomDialog.Item
 
         PopupMenu popup = new PopupMenu(this, view);
         popup.inflate(R.menu.menu_2);
+        popup.setOnMenuItemClickListener(this);
         popup.show();
-        return true;
-    }
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        adapter.removeItem(selectedItem);
+        selectedItem = position;
         return true;
     }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.editar:
+                CustomDialog editar = new CustomDialog(this);
+                editar.show(getFragmentManager(), "editar");
+                insertMode = false;
+                return true;
+
+            case R.id.excluir:
+                adapter.removeItem(selectedItem);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
+    }
 }
